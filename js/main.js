@@ -28,7 +28,6 @@ function doCameraLerp(x, y) {
     camera_lerp.pos.y = -y
 }
 
-alert("!");
 function cameraEvent() {
     // make app draggable
     var app = el("app");
@@ -53,13 +52,10 @@ function cameraEvent() {
 
         // updateGEsDisplay()
     }
-    alert("?");
 
     app.addEventListener("touchstart", function (event) {
         isDragging = true;
 	const touch = event.touches[0];
-	alert("test");
-	alert(Object.stringify(touch));
         offset.x = touch.clientX - body.offsetLeft - camera_pos.x;
         offset.y = touch.clientY - body.offsetTop - camera_pos.y;
     });
