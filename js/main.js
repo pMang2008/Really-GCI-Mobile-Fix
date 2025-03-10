@@ -53,29 +53,31 @@ function cameraEvent() {
         // updateGEsDisplay()
     }
 
-    app.addEventListener("mousedown", function (event) {
+    app.addEventListener("touchstart", function (event) {
         isDragging = true;
-        offset.x = event.clientX - body.offsetLeft - camera_pos.x;
-        offset.y = event.clientY - body.offsetTop - camera_pos.y;
+	const touch = event.touches[0];
+        offset.x = touch.clientX - body.offsetLeft - camera_pos.x;
+        offset.y = touch.clientY - body.offsetTop - camera_pos.y;
     });
 
-    document.addEventListener("mousemove", function (event) {
+    document.addEventListener("touchmove", function (event) {
+	const touch = evet.touches[0];
         if (isDragging && !tmp.the_end) {
             if (camera_lerp.active) {
-                offset.x = event.clientX - body.offsetLeft - camera_pos.x;
-                offset.y = event.clientY - body.offsetTop - camera_pos.y;
+                offset.x = touch.clientX - body.offsetLeft - camera_pos.x;
+                offset.y = touch.clientY - body.offsetTop - camera_pos.y;
                 return
             }
 
-            camera_pos.x = event.clientX - offset.x;
-            camera_pos.y = event.clientY - offset.y;
+            camera_pos.x = touch.clientX - offset.x;
+            camera_pos.y = touch.clientY - offset.y;
 
             updatePosition()
             drawCanvas()
         }
     });
 
-    document.addEventListener("mouseup", function () {
+    document.addEventListener("touchend", function () {
         if (!tmp.the_end) isDragging = false;
     });
 
