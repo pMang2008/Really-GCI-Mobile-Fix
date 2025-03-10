@@ -28,6 +28,7 @@ function doCameraLerp(x, y) {
     camera_lerp.pos.y = -y
 }
 
+alert("!");
 function cameraEvent() {
     // make app draggable
     var app = el("app");
