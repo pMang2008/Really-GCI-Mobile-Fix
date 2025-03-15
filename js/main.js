@@ -53,31 +53,35 @@ function cameraEvent() {
         // updateGEsDisplay()
     }
 
-    app.addEventListener("mousedown", function (event) {
-        isDragging = true;
-        offset.x = event.clientX - body.offsetLeft - camera_pos.x;
-        offset.y = event.clientY - body.offsetTop - camera_pos.y;
-    });
+    app.addEventListener("touchstart", function (event) {
+                isDragging = true;
+                	const touch = event.touches[0];
+                            offset.x = touch.clientX - body.offsetLeft - camera_pos.x;
+                                    offset.y = touch.clientY - body.offsetTop - camera_pos.y;
+                                        });
 
-    document.addEventListener("mousemove", function (event) {
-        if (isDragging && !tmp.the_end) {
-            if (camera_lerp.active) {
-                offset.x = event.clientX - body.offsetLeft - camera_pos.x;
-                offset.y = event.clientY - body.offsetTop - camera_pos.y;
-                return
-            }
+                                            document.addEventListener("touchmove", function (event) {
+                                            	const touch = event.touches[0];
+                                                        if (isDragging && !tmp.the_end) {
+                                                                    if (camera_lerp.active) {
+                                                                                    offset.x = touch.clientX - body.offsetLeft - camera_pos.x;
+                                                                                                    offset.y = touch.clientY - body.offsetTop - camera_pos.y;
+                                                                                                                    return
+                                                                                                                                }
 
-            camera_pos.x = event.clientX - offset.x;
-            camera_pos.y = event.clientY - offset.y;
+                                                                                                                                            camera_pos.x = touch.clientX - offset.x;
+                                                                                                                                                        camera_pos.y = touch.clientY - offset.y;
 
-            updatePosition()
-            drawCanvas()
-        }
-    });
+                                                                                                                                                                    updatePosition()
+                                                                                                                                                                                drawCanvas()
+                                                                                                                                                                                        }
+                                                                                                                                                                                            });
 
-    document.addEventListener("mouseup", function () {
-        if (!tmp.the_end) isDragging = false;
-    });
+                                                                                                                                                                                                document.addEventListener("touchend", function () {
+                                                                                                                                                                                                        if (!tmp.the_end) isDragging = false;
+                                                                                                                                                                                                        	document.documentElement.webkitRequestFullScreen()
+                                                                                                                                                                                                                });
+    })
 
     window.onresize = () => {
         innerSize = { x: window.innerWidth, y: window.innerHeight };
