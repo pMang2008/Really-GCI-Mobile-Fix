@@ -81,7 +81,6 @@ function cameraEvent() {
                                                                                                                                                                                                         if (!tmp.the_end) isDragging = false;
                                                                                                                                                                                                         	document.documentElement.webkitRequestFullScreen()
                                                                                                                                                                                                                 });
-    })
 
     window.onresize = () => {
         innerSize = { x: window.innerWidth, y: window.innerHeight };
