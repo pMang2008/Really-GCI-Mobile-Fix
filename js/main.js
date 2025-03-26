@@ -53,8 +53,7 @@ function cameraEvent() {
         // updateGEsDisplay()
     }
 
-    app.addEventListener("touchstart", function (event) {
-                isDragging = true;
+    app.addEventListener("touchstart", function (event) isDragging = true;
                 	const touch = event.touches[0];
                             offset.x = touch.clientX - body.offsetLeft - camera_pos.x;
                                     offset.y = touch.clientY - body.offsetTop - camera_pos.y;
